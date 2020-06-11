@@ -1,0 +1,157 @@
+intents:
+  - arogya_check
+  - gender
+  - user_age
+  - user_profession
+  - country_travel_30_days
+  - willing_to_volunteer
+  - user_symptoms
+  - medical_history
+  - international_travel_14_days
+  - risk_zone
+
+entities:
+- gen
+- age
+- prof
+- country
+- volunteer
+- symptoms
+- medical
+- international
+- risk
+
+slots:
+  age:
+    type: unfeaturized
+  country:
+    type: unfeaturized
+  gen:
+    type: unfeaturized
+  international:
+    type: unfeaturized
+  medical:
+    type: unfeaturized
+  prof:
+    type: unfeaturized
+  risk:
+    type: unfeaturized
+  symptoms:
+    type: unfeaturized
+  volunteer:
+    type: unfeaturized
+
+responses:
+  utter_ask_gen:
+  - buttons:
+    - payload: '/gender{"gen": "male"}'
+      title: male
+    - payload: '/gender{"gen": "female"}'
+      title: female
+    text: 'YOUR GENDER:'
+
+  utter_ask_age:
+  - text: 'What is your age'
+
+  utter_ask_prof:
+  - buttons:
+    - payload: '/user_profession{"prof": "Doctor"}'
+      title: Doctor
+    - payload: '/user_profession{"prof": "Nurse"}'
+      title: Nurse
+    - payload: '/user_profession{"prof": "Paramedic"}'
+      title: Paramedic
+    - payload: '/user_profession{"prof": "Police"}'
+      title: Police
+    - payload: '/user_profession{"prof": "officers"}'
+      title: officers
+    - payload: '/user_profession{"prof": "Police"}'
+      title: Police
+    - payload: '/user_profession{"prof": "No one"}'
+      title: No one
+    text: choose your profession
+
+  utter_ask_country:
+  - text: 'COUNTRIES TRAVEL OUTSIDE IN LAST 30 DAYS'
+
+  utter_ask_volunteer:
+  - buttons:
+    - payload: '/willing_to_volunteer{"volunteer": "Yes Sure"}'
+      title: Yes Sure
+    - payload: '/willing_to_volunteer{"volunteer": "not now"}'
+      title: Not Now
+    text: READY TO VOLUNTEER IN THE TIME OF NEED
+
+  utter_ask_symptoms:
+  - buttons:
+    - payload: '/user_symptoms{"symptoms": "Cough"}'
+      title: Cough
+    - payload: '/user_symptoms{"symptoms": "Fever"}'
+      title: Fever
+    - payload: '/user_symptoms{"symptoms": "Difficulty in Breathing"}'
+      title: Difficulty in Breathing
+    - payload: '/user_symptoms{"symptoms": "None of the above"}'
+      title: None of the above
+    text: ARE YOU EXPERIENCING ANY OF THE FOLLOWING SYMPTOMS
+
+  utter_ask_medical:
+  - buttons:
+    - payload: '/medical_history{"medical": "Diabetes"}'
+      title: Diabetes
+    - payload: '/medical_history{"medical": "Hypertension"}'
+      title: Hypertension
+    - payload: '/medical_history{"medical": "Lung Disease"}'
+      title: Lung Disease
+    - payload: '/medical_history{"medical": "Heart Disease"}'
+      title: Heart Disease
+    - payload: '/medical_history{"medical": "no series medical problem"}'
+      title: no series medical problem
+    text: HAVE YOU EVER HAD ANY OF THE FOLLOWING
+
+  utter_ask_international:
+  - buttons:
+    - payload: '/international_travel_14_days{"international": "Yes"}'
+      title: Yes
+    - payload: '/international_travel_14_days{"international": "No"}'
+      title: No
+    text: HAVE YOU TRAVELED ANYWHERE INTERNATONALLY IN THE LAST 14 DAYS
+
+  utter_ask_risk:
+  - buttons:
+    - payload: '/risk_zone{"risk": "recently interacted"}'
+      title: I have recently interacted or lived with someone who has tested positive
+        for COVID 19
+    - payload: '/risk_zone{"risk": "helth care worker"}'
+      title: I am a helth care worker
+    - payload: '/risk_zone{"risk": "None"}'
+      title: None of the obove
+    text: WHICH OF THE FOLLOWING APPLY TO YOU
+
+  utter_slots_arogya:
+  - text: "you enter data for your health check is:\n - your gender is: {gen}\n -\
+      \ age : {age}\n - profession : {prof}\n - country travel in last 30 days : {country}\n\
+      \ - like to volunteer: {volunteer}\n - symptoms: {symptoms}\n - medical desies:\
+      \ {medical}\n - international travel in last 14 days: {international}\n - in\
+      \ touch risk area: {risk}"
+
+  utter_submit:
+  - text: would you like to submit the details?
+
+actions:
+- utter_ask_gen
+- utter_ask_age
+- utter_ask_prof
+- utter_ask_country
+- utter_ask_volunteer
+- utter_ask_symptoms
+- utter_ask_medical
+- utter_ask_international
+- utter_ask_risk
+- utter_slots_arogya
+
+forms:
+- corona_form
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
